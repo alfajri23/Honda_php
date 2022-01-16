@@ -1,6 +1,6 @@
 <?php
 
-$database = "toko_dvd";
+$database = "db_saleshonda";
 $hostname = "localhost";
 $username = "root";
 $password = "";
