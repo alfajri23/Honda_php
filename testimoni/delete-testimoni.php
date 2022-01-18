@@ -3,7 +3,7 @@
 
     $id=$_GET["id"];
 
-    $query = "DELETE FROM honda WHERE id like $id";
+    $query = "DELETE FROM testimoni WHERE id like $id";
     $hasil_mysql = mysqli_query($sambungan,$query) or die (mysqli_error($sambungan));
     $pesan = "data berhasil dihapus";
 

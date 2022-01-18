@@ -48,39 +48,30 @@
           <button type="button" class="btn btn-primary text-white btn-sm" data-bs-toggle="modal" data-bs-target="#modalTambah">Tambah</button>
           </span>
           
-          <div class="col-12">
-            <table class="table table-striped">
-            <thead>
-                <tr>
-                <th scope="col">No</th>
-                <th scope="col">Nama</th>
-                <th scope="col">Harga</th>
-                <th scope="col">Aksi</th>
-                </tr>
-            </thead>
-            <tbody>
+          <div class="row flex-wrap justify-content-center">
             <?php
             include("../database.php");
-            $query = "SELECT * FROM honda";
+            $query = "SELECT * FROM gambar";
             $hasil_mysql = mysqli_query($sambungan,$query) or die (mysqli_error($sambungan));
             $no = 1;
             while($baris = mysqli_fetch_row($hasil_mysql))
             {
+              foreach($baris as $br){
             ?>
-                <tr>
-                    <th scope="row"><?= $no++ ?></th>
-                    <td><?php echo $baris[1] ?></td>
-                    <td><?php echo $baris[2] ?></td>
-                    <td>
-                        <a onclick="modalEdit(<?php echo $baris[0] ?>)" class="btn btn-success btn-sm mb-1"><i class="fas fa-pencil-alt"></i></a>
-                        <a href="delete-product.php?id=<?=$baris[0]?>" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></a>
-                    </td>
-                </tr>
+                <!-- <div class=""> -->
+                  <div class="card my-2" style="width: 15rem;">
+                    <img src="<?= $br ?>" class="card-img-top" style="width:100%" alt="...">
+                    <div class="card-body">
+                      <a href="#" class="btn btn-primary">Go somewhere</a>
+                    </div>
+                  </div>
+                <!-- </div> -->
+                
+                
             <?php
+              }
             }
             ?>
-            </tbody>
-            </table>
           </div>
         </div>
 

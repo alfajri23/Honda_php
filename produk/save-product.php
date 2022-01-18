@@ -15,21 +15,70 @@ if (!isset($_POST["id"])){
 	$img3 = $_FILES["image3"]["name"];
 	$img4 = $_FILES["image4"]["name"];
 
-	$dst = "../asset/img/".$var3.$fnm;  // storing image path into the {all_images} folder with 32 characters hex number and file name
-    $dst_db = "all_images/".$var3.$fnm;
-	echo($img1);
-	echo($img2);
+	//echo $_FILES["image1"]["tmp_name"];
+
+	if($_FILES["image1"]['error'] == 0){
+		$dst1 = "../assets/img/produk/".$_FILES["image1"]["name"];  
+		move_uploaded_file($_FILES["image1"]["tmp_name"],$dst1);
+	}else{
+		$dst1 = '';
+	}
+
+	if($_FILES["image2"]['error'] == 0){
+		$dst2 = "../assets/img/produk/".$_FILES["image2"]["name"];  
+		move_uploaded_file($_FILES["image2"]["tmp_name"],$dst2);
+	}else{
+		$dst2 = '';
+	}
+
+	if($_FILES["image3"]['error'] == 0){
+		$dst3 = "../assets/img/produk/".$_FILES["image3"]["name"];  
+		move_uploaded_file($_FILES["image3"]["tmp_name"],$dst3);
+	}else{
+		$dst3 = '';
+	}
+
+	if($_FILES["image4"]['error'] == 0){
+		$dst4 = "../assets/img/produk/".$_FILES["image4"]["name"];  
+		move_uploaded_file($_FILES["image4"]["tmp_name"],$dst4);
+	}else{
+		$dst4 = '';
+	}
+	
+
 	$query = "INSERT INTO honda
-	(nama,harga,spek,jenis)";
+	(nama,harga,spek,jenis,gambar1,gambar2,gambar3,gambar4)";
 	$query .= "VALUES
-	('$nama','$harga','$spek','$jenis')";
+	('$nama','$harga','$spek','$jenis','$dst1','$dst2','$dst3','$dst4')";
 	$hasil_mysql = mysqli_query($sambungan,$query) or die (mysqli_error($sambungan));
 	$pesan = "data berhasil ditambahkan";
 }else{
 	$id = $_POST["id"];
 	$query = "UPDATE honda SET nama='$nama',jenis='$jenis',";
+	if($_FILES["image1"]['error'] == 0){
+		$dst1 = "../assets/img/produk/".$_FILES["image1"]["name"];  
+		move_uploaded_file($_FILES["image1"]["tmp_name"],$dst1);
+		$query .= "gambar1='$dst1',";
+	}
+	if($_FILES["image2"]['error'] == 0){
+		$dst2 = "../assets/img/produk/".$_FILES["image2"]["name"];  
+		move_uploaded_file($_FILES["image2"]["tmp_name"],$dst1);
+		$query .= "gambar2='$dst2',";
+	}
+	if($_FILES["image3"]['error'] == 0){
+		$dst3 = "../assets/img/produk/".$_FILES["image3"]["name"];  
+		move_uploaded_file($_FILES["image3"]["tmp_name"],$dst1);
+		$query .= "gambar3='$dst3',";
+	}
+	if($_FILES["image4"]['error'] == 0){
+		$dst4 = "../assets/img/produk/".$_FILES["image4"]["name"];  
+		move_uploaded_file($_FILES["image4"]["tmp_name"],$dst1);
+		$query .= "gambar4='$dst4'";
+	}
 	$query .= "harga='$harga',spek='$spek'";
 	$query .= "WHERE id = $id";
+
+	//echo $query;
 
 	$hasil_mysql = mysqli_query($sambungan,$query) or die (mysqli_error($sambungan));
 	$pesan = "data berhasil diubah";
@@ -37,6 +86,6 @@ if (!isset($_POST["id"])){
 
 
 
-// header("Location: admin.php");
+header("Location: admin.php");
 
 ?>

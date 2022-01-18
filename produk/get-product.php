@@ -26,7 +26,7 @@ $data = mysqli_fetch_row($hasil_mysql);
     </div>
     <div class="mb-3">
         <label for="exampleInputPassword1" class="form-label">Spesifikasi</label>
-        <textarea class="form-control" name="spek" value="<?= $data[3]?>" id="mytextarea">
+        <textarea class="form-control" name="spek" value="<?= $data[3]?>" id="textareas">
         <?= $data[3]?>
     </textarea>
     </div>
@@ -36,18 +36,22 @@ $data = mysqli_fetch_row($hasil_mysql);
     </div>
     <div class="mb-3">
         <label for="exampleInputPassword1" class="form-label">gambar1</label><br>
+        <img src="<?= $data[5]?>" style="width: 100px;" alt="">
         <input type="file" name="image1">
     </div>
     <div class="mb-3">
         <label for="exampleInputPassword1" class="form-label">gambar2</label><br>
+        <img src="<?= $data[6]?>" style="width: 100px;" alt="">
         <input type="file" name="image2">
     </div>
     <div class="mb-3">
         <label for="exampleInputPassword1" class="form-label">gambar3</label><br>
+        <img src="<?= $data[7]?>" style="width: 100px;" alt="">
         <input type="file" name="image3">
     </div>
     <div class="mb-3">
         <label for="exampleInputPassword1" class="form-label">gambar4</label><br>
+        <img src="<?= $data[8]?>" style="width: 100px;" alt="">
         <input type="file" name="image4">
     </div>
 

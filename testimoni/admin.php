@@ -40,32 +40,46 @@
           <p>Kontak</p>
         </header>
 
-        <div class="row">
+        <div class="row p-2">
+          <span>
+            <button type="button" class="btn btn-primary text-white btn-sm" data-bs-toggle="modal" data-bs-target="#modalTambah">Tambah</button>
+          </span>
+
+          <div class="row p-2">
+         
           <div class="col-12">
-            <form action="update-kontak.php" method="POST" id="formKey">
-                <div class="mb-3">
-                    <label for="exampleInputEmail1" class="form-label">Nama</label>
-                    <input type="text" class="form-control" name="nama" id="namas" aria-describedby="emailHelp">
-                </div>
-
-                <div class="mb-3">
-                    <label for="exampleInputPassword1" class="form-label">Tanggal</label>
-                    <input type="text" class="form-control" name="tanggal" id="kodes">
-                </div>
-
-                <div class="mb-3">
-                    <label for="exampleInputPassword1" class="form-label">Keterangan</label>
-                    <input type="text" class="form-control" name="keterangan" id="kodes">
-                </div>
-
-                <div class="mb-3">
-                    <label for="exampleInputPassword1" class="form-label">Foto</label>
-                    <input type="file" name="foto">
-                </div>
-
-                <button type="submit" class="btn btn-primary">Tambah</button>
-            </form>
+            <table class="table table-striped">
+            <thead>
+                <tr>
+                <th scope="col">No</th>
+                <th scope="col">Nama</th>
+                <th scope="col">Aksi</th>
+                </tr>
+            </thead>
+            <tbody>
+            <?php
+            include("../database.php");
+            $query = "SELECT * FROM testimoni";
+            $hasil_mysql = mysqli_query($sambungan,$query) or die (mysqli_error($sambungan));
+            $no = 1;
+            while($baris = mysqli_fetch_row($hasil_mysql))
+            {
+            ?>
+                <tr>
+                    <th scope="row"><?= $no++ ?></th>
+                    <td><?php echo $baris[1] ?></td>
+                    <td>
+                        <a onclick="modalEdit(<?php echo $baris[0] ?>)" class="btn btn-success btn-sm mb-1"><i class="fas fa-pencil-alt"></i></a>
+                        <a href="delete-testimoni.php?id=<?=$baris[0]?>" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></a>
+                    </td>
+                </tr>
+            <?php
+            }
+            ?>
+            </tbody>
+            </table>
           </div>
+        </div>
 
         </div>
 
@@ -81,54 +95,9 @@
     <div class="footer-top">
       <div class="container">
         <div class="row gy-4">
-          <div class="col-lg-5 col-md-12 footer-info">
-            <a href="index.html" class="logo d-flex align-items-center">
-              <img src="assets/img/logo.png" alt="">
-              <span>FlexStart</span>
-            </a>
-            <p>Cras fermentum odio eu feugiat lide par naso tierra. Justo eget nada terra videa magna derita valies darta donna mare fermentum iaculis eu non diam phasellus.</p>
-            <div class="social-links mt-3">
-              <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
-              <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
-              <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
-              <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></a>
-            </div>
-          </div>
-
-          <div class="col-lg-2 col-6 footer-links">
-            <h4>Useful Links</h4>
-            <ul>
-              <li><i class="bi bi-chevron-right"></i> <a href="#">Home</a></li>
-              <li><i class="bi bi-chevron-right"></i> <a href="#">About us</a></li>
-              <li><i class="bi bi-chevron-right"></i> <a href="#">Services</a></li>
-              <li><i class="bi bi-chevron-right"></i> <a href="#">Terms of service</a></li>
-              <li><i class="bi bi-chevron-right"></i> <a href="#">Privacy policy</a></li>
-            </ul>
-          </div>
-
-          <div class="col-lg-2 col-6 footer-links">
-            <h4>Our Services</h4>
-            <ul>
-              <li><i class="bi bi-chevron-right"></i> <a href="#">Web Design</a></li>
-              <li><i class="bi bi-chevron-right"></i> <a href="#">Web Development</a></li>
-              <li><i class="bi bi-chevron-right"></i> <a href="#">Product Management</a></li>
-              <li><i class="bi bi-chevron-right"></i> <a href="#">Marketing</a></li>
-              <li><i class="bi bi-chevron-right"></i> <a href="#">Graphic Design</a></li>
-            </ul>
-          </div>
-
-          <div class="col-lg-3 col-md-12 footer-contact text-center text-md-start">
-            <h4>Contact Us</h4>
-            <p>
-              A108 Adam Street <br>
-              New York, NY 535022<br>
-              United States <br><br>
-              <strong>Phone:</strong> +1 5589 55488 55<br>
-              <strong>Email:</strong> info@example.com<br>
-            </p>
-
-          </div>
-
+        <?php 
+            include('../component/footer-admin.php')
+          ?>
         </div>
       </div>
     </div> 
@@ -151,60 +120,59 @@
 
   <!--Modal Edit-->
   <div class="modal modal-info fade bs-modal-md-primary" id="modalEdit" tabindex="-1" role="dialog" aria-labelledby="myMediumModalLabel" aria-hidden="true" style="display: none">
-        <div class="modal-dialog modal-md">
-            <div class="modal-content">
-                <div class="modal-header text-inverse">
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                    <h5 class="modal-title" id="myMediumModalLabel">Edit</h5>
-                </div>
-                <div class="modal-body">
-                    <form action="javascript:void(0)" id="formKey">
-                        <div class="mb-3">
-                            <label for="exampleInputEmail1" class="form-label">Nama</label>
-                            <input type="text" class="form-control" name="nama" id="namas" aria-describedby="emailHelp">
-                        </div>
+      <div class="modal-dialog modal-md">
+          <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title">Edit</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body" id="formEdit">
+              
+              </div>
+          </div>
+          <!-- /.modal-content -->
+      </div>
+      <!-- /.modal-dialog -->
+  </div>
 
-                        <div class="mb-3">
-                            <label for="exampleInputPassword1" class="form-label">Harga</label>
-                            <input type="text" class="form-control" name="kode" id="kodes">
-                        </div>
-                        <div class="mb-3">
-                            <label for="exampleInputPassword1" class="form-label">Spesifikasi</label>
-                            <textarea id="mytextarea"></textarea>
-                        </div>
-                        <div class="mb-3">
-                            <label for="exampleInputPassword1" class="form-label">Jenis</label>
-                            <input type="text" class="form-control" name="jenis" id="jenis">
-                        </div>
-                        <div class="mb-3">
-                            <label for="exampleInputPassword1" class="form-label">Deskripsi</label>
-                            <input type="text" class="form-control" name="deskripsi" id="descs">
-                        </div>
-                        <div class="mb-3">
-                            <label for="exampleInputPassword1" class="form-label">gambar1</label><br>
-                            <input type="file" name="image1">
-                        </div>
-                        <div class="mb-3">
-                            <label for="exampleInputPassword1" class="form-label">gambar2</label><br>
-                            <input type="file" name="image2">
-                        </div>
-                        <div class="mb-3">
-                            <label for="exampleInputPassword1" class="form-label">gambar3</label><br>
-                            <input type="file" name="image3">
-                        </div>
-                        <div class="mb-3">
-                            <label for="exampleInputPassword1" class="form-label">gambar4</label><br>
-                            <input type="file" name="image4">
-                        </div>
-
-                        <button type="submit" class="btn btn-primary">Tambah</button>
-                    </form>
-                </div>
+  <!--Modal Tambah-->
+  <div class="modal modal-info fade bs-modal-md-primary" id="modalTambah" tabindex="-1" role="dialog" aria-labelledby="myMediumModalLabel" aria-hidden="true" style="display: none">
+      <div class="modal-dialog modal-md">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Tambah</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <!-- /.modal-content -->
-        </div>
-        <!-- /.modal-dialog -->
-    </div>
+              <div class="modal-body">
+              <form action="save-testimoni.php" method="POST" id="formKey" enctype="multipart/form-data">
+                  <div class="mb-3">
+                      <label for="exampleInputEmail1" class="form-label">Nama</label>
+                      <input type="text" class="form-control" name="nama" id="namas" aria-describedby="emailHelp">
+                  </div>
+
+                  <div class="mb-3">
+                      <label for="exampleInputPassword1" class="form-label">Tanggal</label>
+                      <input type="date" class="form-control" name="tanggal" id="kodes">
+                  </div>
+
+                  <div class="mb-3">
+                      <label for="exampleInputPassword1" class="form-label">Keterangan</label>
+                      <input type="text" class="form-control" name="keterangan" id="kodes">
+                  </div>
+
+                  <div class="mb-3">
+                      <label for="exampleInputPassword1" class="form-label">Foto</label>
+                      <input type="file" name="foto">
+                  </div>
+
+                  <button type="submit" class="btn btn-primary">Tambah</button>
+              </form>
+              </div>
+          </div>
+          <!-- /.modal-content -->
+      </div>
+      <!-- /.modal-dialog -->
+  </div>
 
   
   
@@ -228,6 +196,31 @@
 	          'Authorization': `Bearer {{Session::get('token')}}`
 	      }
 	  });
+
+    $('#modalEdit').on('hidden.bs.modal', function () {
+      $('#formBarang').trigger("reset");
+    });
+
+    $('#modalTambah').on('hidden.bs.modal', function () {
+      $('#formBarang').trigger("reset");
+    });
+
+    function modalEdit(id){
+      $.ajax({
+          type: "POST",
+          url: 'get-testimoni.php',
+          data: {
+              'id' : id
+          },
+          success: function(data)
+          {
+              $('#modalEdit').modal('show');
+              $('#formEdit').html(data);
+
+          }
+      });
+
+    }
 
   </script>
 
