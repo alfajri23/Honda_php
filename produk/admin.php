@@ -2,7 +2,11 @@
 <html lang="en">
 <head>
     <?php
-        include("../head.php") 
+        include("../head.php");
+        session_start();
+        if (!isset($_SESSION['user'])){
+          header("Location: ../login.php");
+        }
     ?>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tinymce/5.10.0/tinymce.min.js"
     integrity="sha512-XNYSOn0laKYg55QGFv1r3sIlQWCAyNKjCa+XXF5uliZH+8ohn327Ewr2bpEnssV9Zw3pB3pmVvPQNrnCTRZtCg=="
@@ -15,7 +19,7 @@
   <header id="header" class="header fixed-top">
     <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
 
-      <a href="index.html" class="logo d-flex align-items-center">
+      <a href="../dashboard/dashboard.php" class="logo d-flex align-items-center">
         <img src="../assets/img/logo.png" alt="">
         <span>Hondaku</span>
       </a>
@@ -24,8 +28,9 @@
         <ul>
             <li><a class="nav-link scrollto active" href="../produk/admin.php">Produk</a></li>
             <li><a class="nav-link scrollto" href="../testimoni/admin.php">Testimoni</a></li>
-            <li><a class="nav-link scrollto" href="#services">Gambar</a></li>
-        </ul>
+            <li><a class="nav-link scrollto" href="../gambar/admin.php">Gambar</a></li>
+            <li><a class="nav-link scrollto" href="../logout.php">Logout</a></li>
+          </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
 

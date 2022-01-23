@@ -2,11 +2,13 @@
 <html lang="en">
 <head>
     <?php
-        include("../head.php") 
+        include("../head.php");
+        session_start();
+
+        if (!isset($_SESSION['user'])){
+          header("Location: ../login.php");
+        }
     ?>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/tinymce/5.10.0/tinymce.min.js"
-    integrity="sha512-XNYSOn0laKYg55QGFv1r3sIlQWCAyNKjCa+XXF5uliZH+8ohn327Ewr2bpEnssV9Zw3pB3pmVvPQNrnCTRZtCg=="
-    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 </head>
 
 <body>
@@ -15,7 +17,7 @@
   <header id="header" class="header fixed-top">
     <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
 
-      <a href="index.html" class="logo d-flex align-items-center">
+      <a href="../dashboard/dashboard.php" class="logo d-flex align-items-center">
         <img src="../assets/img/logo.png" alt="">
         <span>Hondaku</span>
       </a>
@@ -24,8 +26,9 @@
         <ul>
             <li><a class="nav-link scrollto active" href="../produk/admin.php">Produk</a></li>
             <li><a class="nav-link scrollto" href="../testimoni/admin.php">Testimoni</a></li>
-            <li><a class="nav-link scrollto" href="#services">Gambar</a></li>
-        </ul>
+            <li><a class="nav-link scrollto" href="../gambar/admin.php">Gambar</a></li>
+            <li><a class="nav-link scrollto" href="../logout.php">Logout</a></li>
+          </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
 
@@ -40,14 +43,10 @@
 
         <header class="section-header">
           <h2>List</h2>
-          <p>Produk</p>
+          <p>Gambar</p>
         </header>
 
-        <div class="row p-2">
-          <span>
-          <button type="button" class="btn btn-primary text-white btn-sm" data-bs-toggle="modal" data-bs-target="#modalTambah">Tambah</button>
-          </span>
-          
+        <div class="row p-2">          
           <div class="row flex-wrap justify-content-center">
             <?php
             include("../database.php");
@@ -56,13 +55,13 @@
             $no = 1;
             while($baris = mysqli_fetch_row($hasil_mysql))
             {
-              foreach($baris as $br){
+              for($i = 1 ; $i < count($baris); $i++){
             ?>
                 <!-- <div class=""> -->
                   <div class="card my-2" style="width: 15rem;">
-                    <img src="<?= $br ?>" class="card-img-top" style="width:100%" alt="...">
+                    <img src="<?= $baris[$i] ?>" class="card-img-top" style="width:100%" alt="...">
                     <div class="card-body">
-                      <a href="#" class="btn btn-primary">Go somewhere</a>
+                      <a class="btn btn-info btn-sm" onclick="modalEdit(<?=$i?>)"><i class="fas fa-pencil-alt"></i></a>
                     </div>
                   </div>
                 <!-- </div> -->
@@ -123,67 +122,13 @@
               </div>
           </div>
       </div>
-  </div>
-
-  <!--Modal Tambah-->
-  <div class="modal modal-info fade bs-modal-md-primary" id="modalTambah" tabindex="-1" role="dialog" aria-labelledby="myMediumModalLabel" aria-hidden="true" style="display: none">
-      <div class="modal-dialog modal-md">
-          <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title">Tambah Produk Anda</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-              <div class="modal-body" id="formEdit">
-              <form action="save-product.php"  id="formBarang" method="POST" enctype="multipart/form-data">
-                  <div class="mb-3">
-                      <label for="exampleInputEmail1" class="form-label">Nama</label>
-                      <input type="text" class="form-control" name="nama" aria-describedby="emailHelp">
-                  </div>
-
-                  <div class="mb-3">
-                      <label for="exampleInputPassword1" class="form-label">Harga</label>
-                      <input type="text" class="form-control" name="harga" >
-                  </div>
-                  <div class="mb-3">
-                      <label for="exampleInputPassword1" class="form-label">Spesifikasi</label>
-                      <textarea class="form-control tambah" name="spek" id="textareaAdd">
-                  </textarea>
-                  </div>
-                  <div class="mb-3">
-                      <label for="exampleInputPassword1" class="form-label">Jenis</label>
-                      <input type="text" class="form-control" name="jenis" id="jenis">
-                  </div>
-                  <div class="mb-3">
-                      <label for="exampleInputPassword1" class="form-label">gambar1</label><br>
-                      <input type="file" name="image1">
-                  </div>
-                  <div class="mb-3">
-                      <label for="exampleInputPassword1" class="form-label">gambar2</label><br>
-                      <input type="file" name="image2">
-                  </div>
-                  <div class="mb-3">
-                      <label for="exampleInputPassword1" class="form-label">gambar3</label><br>
-                      <input type="file" name="image3">
-                  </div>
-                  <div class="mb-3">
-                      <label for="exampleInputPassword1" class="form-label">gambar4</label><br>
-                      <input type="file" name="image4">
-                  </div>
-
-                  <button type="submit" class="btn btn-primary">Tambah</button>
-              </form>
-              </div>
-          </div>
-      </div>
-  </div>
-
-  
+  </div>  
   
     <!-- Vendor JS Files -->
   
-    <script src="../assets/vendor/purecounter/purecounter.js"></script>
+  <script src="../assets/vendor/purecounter/purecounter.js"></script>
   
-    <script src="../assets/vendor/aos/aos.js"></script>
+  <script src="../assets/vendor/aos/aos.js"></script>
   <script src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script src="../assets/vendor/glightbox/js/glightbox.min.js"></script>
   <script src="../assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
@@ -221,7 +166,7 @@
     function modalEdit(id){
       $.ajax({
           type: "POST",
-          url: 'get-product.php',
+          url: 'get-gambar.php',
           data: {
               'id' : id
           },
@@ -230,15 +175,6 @@
               $('#modalEdit').modal('show');
               $('#formEdit').html(data);
 
-              tinymce.init({
-                  selector: '#textareas',
-                  plugins: [
-                            "advlist autolink lists charmap print preview anchor",
-                            "searchreplace visualblocks code fullscreen",
-                            "paste wordcount"
-                        ],
-                  toolbar: "undo redo | bold italic | bullist numlist outdent indent "
-              });
           }
       });
 

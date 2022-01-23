@@ -2,7 +2,11 @@
 <html lang="en">
 <head>
     <?php
-        include("../head.php") 
+        include("../head.php");
+        session_start();
+        if (!isset($_SESSION['user'])){
+          header("Location: ../login.php");
+        } 
     ?>
 </head>
 
@@ -12,7 +16,7 @@
   <header id="header" class="header fixed-top">
     <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
 
-      <a href="index.html" class="logo d-flex align-items-center">
+      <a href="../dashboard/dashboard.php" class="logo d-flex align-items-center">
         <img src="../assets/img/logo.png" alt="">
         <span>FlexStart</span>
       </a>
@@ -21,7 +25,8 @@
         <ul>
             <li><a class="nav-link scrollto active" href="../produk/admin.php">Produk</a></li>
             <li><a class="nav-link scrollto" href="../testimoni/admin.php">Testimoni</a></li>
-            <li><a class="nav-link scrollto" href="#services">Gambar</a></li>
+            <li><a class="nav-link scrollto" href="../gambar/admin.php">Gambar</a></li>
+            <li><a class="nav-link scrollto" href="../logout.php">Logout</a></li>
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
@@ -37,7 +42,7 @@
 
         <header class="section-header">
           <h2>List</h2>
-          <p>Kontak</p>
+          <p>Testimoni</p>
         </header>
 
         <div class="row p-2">
