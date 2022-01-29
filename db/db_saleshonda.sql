@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 18 Jan 2022 pada 15.57
+-- Waktu pembuatan: 29 Jan 2022 pada 10.46
 -- Versi server: 10.4.22-MariaDB
 -- Versi PHP: 7.4.27
 
@@ -42,7 +42,7 @@ CREATE TABLE `gambar` (
 --
 
 INSERT INTO `gambar` (`id`, `header1`, `header2`, `konten1`, `konten2`, `konten4`, `konten5`) VALUES
-(1, '../assets/img/produk/buku bob.jpg', '../assets/img/produk/buku bob.jpg', NULL, NULL, NULL, NULL);
+(1, '../assets/img/produk/buku bob.jpg', '../assets/img/produk/buku bob.jpg', '../assets/img/gambar/Group 8.png', NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -94,6 +94,25 @@ INSERT INTO `testimoni` (`id`, `nama`, `gambar`, `ket`, `tanggal`) VALUES
 (1, 'bapack', '../assets/img/testimoni/makinmahir.jpg', 'alhamdulillah genio nya mantap', '0000-00-00'),
 (2, 'bapak2', 'testi2.jpeg', 'alhamdulillah mantap', NULL);
 
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `user`
+--
+
+CREATE TABLE `user` (
+  `nama` varchar(255) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  `id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `user`
+--
+
+INSERT INTO `user` (`nama`, `password`, `id`) VALUES
+('admin', 'admin', 1);
+
 --
 -- Indexes for dumped tables
 --
@@ -117,6 +136,12 @@ ALTER TABLE `testimoni`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indeks untuk tabel `user`
+--
+ALTER TABLE `user`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT untuk tabel yang dibuang
 --
 
@@ -137,6 +162,12 @@ ALTER TABLE `honda`
 --
 ALTER TABLE `testimoni`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT untuk tabel `user`
+--
+ALTER TABLE `user`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
