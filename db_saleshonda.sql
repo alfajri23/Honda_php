@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 15 Jan 2022 pada 11.55
+-- Waktu pembuatan: 29 Jan 2022 pada 10.46
 -- Versi server: 10.4.22-MariaDB
--- Versi PHP: 8.0.13
+-- Versi PHP: 7.4.27
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -42,8 +42,7 @@ CREATE TABLE `gambar` (
 --
 
 INSERT INTO `gambar` (`id`, `header1`, `header2`, `konten1`, `konten2`, `konten4`, `konten5`) VALUES
-(1, 'banner-beat.jpg', NULL, NULL, NULL, NULL, NULL),
-(2, 'homebanner-vario-125-1-07012022-010247.jpg', NULL, NULL, NULL, NULL, NULL);
+(1, '../assets/img/produk/buku bob.jpg', '../assets/img/produk/buku bob.jpg', '../assets/img/gambar/Group 8.png', NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -69,9 +68,8 @@ CREATE TABLE `honda` (
 --
 
 INSERT INTO `honda` (`id`, `nama`, `harga`, `spek`, `jenis`, `gambar1`, `gambar2`, `gambar3`, `gambar4`, `gambar5`) VALUES
-(1, 'BeAT - CBS', 18030000, 'Tipe Mesin (4 – Langkah, SOHC, eSP), Volume Langkah (109.5cc), Sistem Suplai Bahan Bakar (Injeksi PGM-FI), Kapasitas Tangki Bahan Bakar (4.2 Liter), Kapasitas Minyak Pelumas (0.65 Liter)', 'matic', 'beat-cbs-dance_white_black.png', 'beat-cbs-funk_red_black.png', 'beat-cbs-hard_rock_black.png', 'beat-cbs-techno_blue_black.png', NULL),
-(2, 'BeAT - CBS ISS', 18790000, 'Tipe Mesin (4 – Langkah, SOHC, eSP), Volume Langkah (109.5cc), Sistem Suplai Bahan Bakar (Injeksi PGM-FI), Kapasitas Tangki Bahan Bakar (4.2 Liter), Kapasitas Minyak Pelumas (0.65 Liter)', 'matic', 'beat-cbs_iss-electro_matte_blue.png', 'beat-cbs_iss-garage_matte_black.png', '', '', ''),
-(3, 'BeAT - Street', 18810000, 'Tipe Mesin (4 – Langkah, SOHC, eSP), Volume Langkah (109.5cc), Sistem Suplai Bahan Bakar (Injeksi PGM-FI), Kapasitas Tangki Bahan Bakar (4,2 L), Kapasitas Minyak Pelumas (0,65 Liter)\r\n', 'matic', 'BeAT-street-silver.png', 'BeAT-street-black.png', NULL, NULL, NULL),
+(1, 'BeAT - CBS', 20000000, '<p>hallo</p>', 'matic', '../assets/img/produk/buku bob.jpg', '../assets/img/produk/earth.jpg', '../assets/img/produk/buku bob.jpg', 'beat-cbs-techno_blue_black.png', NULL),
+(3, 'BeAT - Street', 18810000, '        Tipe Mesin (4 – Langkah, SOHC, eSP), Volume Langkah (109.5cc), Sistem Suplai Bahan Bakar (Injeksi PGM-FI), Kapasitas Tangki Bahan Bakar (4,2 L), Kapasitas Minyak Pelumas (0,65 Liter)\r\n    ', 'matic', '../assets/img/produk/budimark.png', 'BeAT-street-black.png', NULL, NULL, NULL),
 (4, 'BeAT - CBS ISS Deluxe', 18890000, 'Tipe Mesin (4 – Langkah, SOHC, eSP), Volume Langkah (109.5cc), Sistem Suplai Bahan Bakar (Injeksi PGM-FI), Kapasitas Tangki Bahan Bakar (4.2 Liter), Kapasitas Minyak Pelumas (0.65 Liter)', 'matic', 'beat-cbs_iss-deluxe_black.png', 'beat-cbs_iss-deluxe_blue.png', 'beat-cbs_iss-deluxe_brown.png', 'beat-cbs_iss-deluxe_silver.png', NULL);
 
 -- --------------------------------------------------------
@@ -93,9 +91,27 @@ CREATE TABLE `testimoni` (
 --
 
 INSERT INTO `testimoni` (`id`, `nama`, `gambar`, `ket`, `tanggal`) VALUES
-(1, 'bapak1', 'testi1.jpeg', 'alhamdulillah genio nya mantap', NULL),
-(2, 'bapak2', 'testi2.jpeg', 'alhamdulillah mantap', NULL),
-(3, 'bapak3', 'testi3.jpeg', 'alhamdulillah mantap cs ramah', NULL);
+(1, 'bapack', '../assets/img/testimoni/makinmahir.jpg', 'alhamdulillah genio nya mantap', '0000-00-00'),
+(2, 'bapak2', 'testi2.jpeg', 'alhamdulillah mantap', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `user`
+--
+
+CREATE TABLE `user` (
+  `nama` varchar(255) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  `id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `user`
+--
+
+INSERT INTO `user` (`nama`, `password`, `id`) VALUES
+('admin', 'admin', 1);
 
 --
 -- Indexes for dumped tables
@@ -120,6 +136,12 @@ ALTER TABLE `testimoni`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indeks untuk tabel `user`
+--
+ALTER TABLE `user`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT untuk tabel yang dibuang
 --
 
@@ -133,13 +155,19 @@ ALTER TABLE `gambar`
 -- AUTO_INCREMENT untuk tabel `honda`
 --
 ALTER TABLE `honda`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT untuk tabel `testimoni`
 --
 ALTER TABLE `testimoni`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT untuk tabel `user`
+--
+ALTER TABLE `user`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
