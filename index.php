@@ -35,6 +35,11 @@
   * License: https://bootstrapmade.com/license/
   ======================================================== -->
 </head>
+<style>
+  .honda{
+    color: #ff0071 !important;
+  }
+</style>
 
 <body>
 
@@ -44,7 +49,7 @@
 
       <a href="index.html" class="logo d-flex align-items-center">
         <img src="assets/img/logo.png" alt="">
-        <span>FlexStart</span>
+        <span class="honda">FlexStart</span>
       </a>
 
       <nav id="navbar" class="navbar">

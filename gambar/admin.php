@@ -59,7 +59,7 @@
             ?>
                 <!-- <div class=""> -->
                   <div class="card my-2" style="width: 15rem;">
-                    <img src="<?= $baris[$i] ?>" class="card-img-top" style="width:100%" alt="...">
+                    <img src="../assets/img/gambar/<?= $baris[$i] ?>" class="card-img-top" style="width:100%" alt="...">
                     <div class="card-body">
                       <a class="btn btn-info btn-sm" onclick="modalEdit(<?=$i?>)"><i class="fas fa-pencil-alt"></i></a>
                     </div>

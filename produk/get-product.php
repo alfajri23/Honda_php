@@ -36,22 +36,22 @@ $data = mysqli_fetch_row($hasil_mysql);
     </div>
     <div class="mb-3">
         <label for="exampleInputPassword1" class="form-label">gambar1</label><br>
-        <img src="<?= $data[5]?>" style="width: 100px;" alt="">
+        <img src="../assets/img/produk/<?= $data[5]?>" style="width: 100px;" alt="">
         <input type="file" name="image1">
     </div>
     <div class="mb-3">
         <label for="exampleInputPassword1" class="form-label">gambar2</label><br>
-        <img src="<?= $data[6]?>" style="width: 100px;" alt="">
+        <img src="../assets/img/produk/<?= $data[6]?>" style="width: 100px;" alt="">
         <input type="file" name="image2">
     </div>
     <div class="mb-3">
         <label for="exampleInputPassword1" class="form-label">gambar3</label><br>
-        <img src="<?= $data[7]?>" style="width: 100px;" alt="">
+        <img src="../assets/img/produk/<?= $data[7]?>" style="width: 100px;" alt="">
         <input type="file" name="image3">
     </div>
     <div class="mb-3">
         <label for="exampleInputPassword1" class="form-label">gambar4</label><br>
-        <img src="<?= $data[8]?>" style="width: 100px;" alt="">
+        <img src="../assets/img/produk/<?= $data[8]?>" style="width: 100px;" alt="">
         <input type="file" name="image4">
     </div>
 

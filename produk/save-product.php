@@ -16,31 +16,36 @@ if (!isset($_POST["id"])){
 	$img4 = $_FILES["image4"]["name"];
 
 	//echo $_FILES["image1"]["tmp_name"];
+	//"../assets/img/produk/".
 
 	if($_FILES["image1"]['error'] == 0){
-		$dst1 = "../assets/img/produk/".$_FILES["image1"]["name"];  
-		move_uploaded_file($_FILES["image1"]["tmp_name"],$dst1);
+		$dsts1 = "../assets/img/produk/".$_FILES["image1"]["name"]; 
+		$dst1 = $_FILES["image1"]["name"]; 
+		move_uploaded_file($_FILES["image1"]["tmp_name"],$dsts1);
 	}else{
 		$dst1 = '';
 	}
 
 	if($_FILES["image2"]['error'] == 0){
-		$dst2 = "../assets/img/produk/".$_FILES["image2"]["name"];  
-		move_uploaded_file($_FILES["image2"]["tmp_name"],$dst2);
+		$dsts2 = "../assets/img/produk/".$_FILES["image2"]["name"];  
+		$dst2 = $_FILES["image2"]["name"]; 
+		move_uploaded_file($_FILES["image2"]["tmp_name"],$dsts2);
 	}else{
 		$dst2 = '';
 	}
 
 	if($_FILES["image3"]['error'] == 0){
-		$dst3 = "../assets/img/produk/".$_FILES["image3"]["name"];  
-		move_uploaded_file($_FILES["image3"]["tmp_name"],$dst3);
+		$dsts3 = "../assets/img/produk/".$_FILES["image3"]["name"]; 
+		$dst3 = $_FILES["image3"]["name"];  
+		move_uploaded_file($_FILES["image3"]["tmp_name"],$dsts3);
 	}else{
 		$dst3 = '';
 	}
 
 	if($_FILES["image4"]['error'] == 0){
-		$dst4 = "../assets/img/produk/".$_FILES["image4"]["name"];  
-		move_uploaded_file($_FILES["image4"]["tmp_name"],$dst4);
+		$dsts4 = "../assets/img/produk/".$_FILES["image4"]["name"];  
+		$dst4 = $_FILES["image4"]["name"]; 
+		move_uploaded_file($_FILES["image4"]["tmp_name"],$dsts4);
 	}else{
 		$dst4 = '';
 	}
@@ -56,24 +61,28 @@ if (!isset($_POST["id"])){
 	$id = $_POST["id"];
 	$query = "UPDATE honda SET nama='$nama',jenis='$jenis',";
 	if($_FILES["image1"]['error'] == 0){
-		$dst1 = "../assets/img/produk/".$_FILES["image1"]["name"];  
-		move_uploaded_file($_FILES["image1"]["tmp_name"],$dst1);
+		$dsts1 = "../assets/img/produk/".$_FILES["image1"]["name"];
+		$dst1 = $_FILES["image1"]["name"];   
+		move_uploaded_file($_FILES["image1"]["tmp_name"],$dsts1);
 		$query .= "gambar1='$dst1',";
 	}
 	if($_FILES["image2"]['error'] == 0){
-		$dst2 = "../assets/img/produk/".$_FILES["image2"]["name"];  
-		move_uploaded_file($_FILES["image2"]["tmp_name"],$dst1);
+		$dsts2 = "../assets/img/produk/".$_FILES["image2"]["name"];  
+		$dst2 = $_FILES["image2"]["name"];   
+		move_uploaded_file($_FILES["image2"]["tmp_name"],$dsts2);
 		$query .= "gambar2='$dst2',";
 	}
 	if($_FILES["image3"]['error'] == 0){
-		$dst3 = "../assets/img/produk/".$_FILES["image3"]["name"];  
-		move_uploaded_file($_FILES["image3"]["tmp_name"],$dst1);
+		$dsts3 = "../assets/img/produk/".$_FILES["image3"]["name"]; 
+		$dst3 = $_FILES["image3"]["name"];   
+		move_uploaded_file($_FILES["image3"]["tmp_name"],$dsts3);
 		$query .= "gambar3='$dst3',";
 	}
 	if($_FILES["image4"]['error'] == 0){
-		$dst4 = "../assets/img/produk/".$_FILES["image4"]["name"];  
-		move_uploaded_file($_FILES["image4"]["tmp_name"],$dst1);
-		$query .= "gambar4='$dst4'";
+		$dsts4 = "../assets/img/produk/".$_FILES["image4"]["name"];  
+		$dst4 = $_FILES["image4"]["name"];   
+		move_uploaded_file($_FILES["image4"]["tmp_name"],$dsts4);
+		$query .= "gambar4='$dst4',";
 	}
 	$query .= "harga='$harga',spek='$spek'";
 	$query .= "WHERE id = $id";

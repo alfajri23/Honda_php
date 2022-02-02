@@ -16,7 +16,7 @@ $foto = $data[$id];
 
     <div class="mb-3">
         <label for="exampleInputPassword1" class="form-label">Foto</label>
-        <img src="<?= $foto?>" style="width: 100px;" alt="">
+        <img src="../assets/img/gambar/<?= $foto?>" style="width: 100px;" alt="">
         <input type="file" name="image">
         <input type="hidden" name="id" value="<?= $id ?>">
     </div>

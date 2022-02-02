@@ -19,7 +19,7 @@ $data = mysqli_fetch_row($hasil_mysql);
     </div>
 
     <div class="mb-3">
-        <img src="<?= $data[2]?>" style="width: 200px;" alt=""><br>
+        <img src="../assets/img/testimoni/<?= $data[2]?>" style="width: 200px;" alt=""><br>
         <label for="exampleInputPassword1" class="form-label">Foto</label>
         <input type="file" name="foto">
     </div>

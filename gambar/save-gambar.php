@@ -7,8 +7,9 @@ $id=$_POST["id"];
 	$id = $_POST["id"];
 	$query = "UPDATE gambar SET ";
 
-    $dst = "../assets/img/gambar/".$_FILES["image"]["name"];  
-	move_uploaded_file($_FILES["image"]["tmp_name"],$dst);
+    $dsts = "../assets/img/gambar/".$_FILES["image"]["name"];  
+    $dst = $_FILES["image"]["name"];  
+	move_uploaded_file($_FILES["image"]["tmp_name"],$dsts);
 
     switch ($id) {
         case 1:
