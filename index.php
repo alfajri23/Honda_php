@@ -35,52 +35,34 @@
   * License: https://bootstrapmade.com/license/
   ======================================================== -->
 </head>
-<style>
-  .honda{
-    color: #ff0071 !important;
-  }
-</style>
 
 <body>
-
+  <style>
+    .honda {
+      color:#de2729 !important;
+    }
+  </style>
   <!-- ======= Header ======= -->
   <header id="header" class="header fixed-top">
     <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
 
       <a href="index.html" class="logo d-flex align-items-center">
-        <img src="assets/img/logo.png" alt="">
-        <span class="honda">FlexStart</span>
+        <img src="assets/img/honda-logo.svg" alt="">
+        <span class="honda"></span>
       </a>
 
       <nav id="navbar" class="navbar">
         <ul>
-          <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
-          <li><a class="nav-link scrollto" href="#about">About</a></li>
-          <li><a class="nav-link scrollto" href="#services">Services</a></li>
-          <li><a class="nav-link scrollto" href="#portfolio">Portfolio</a></li>
-          <li><a class="nav-link scrollto" href="#team">Team</a></li>
-          <li><a href="blog.html">Blog</a></li>
-          <li class="dropdown"><a href="#"><span>Drop Down</span> <i class="bi bi-chevron-down"></i></a>
-            <ul>
-              <li><a href="#">Drop Down 1</a></li>
-              <li class="dropdown"><a href="#"><span>Deep Drop Down</span> <i class="bi bi-chevron-right"></i></a>
-                <ul>
-                  <li><a href="#">Deep Drop Down 1</a></li>
-                  <li><a href="#">Deep Drop Down 2</a></li>
-                  <li><a href="#">Deep Drop Down 3</a></li>
-                  <li><a href="#">Deep Drop Down 4</a></li>
-                  <li><a href="#">Deep Drop Down 5</a></li>
-                </ul>
-              </li>
-              <li><a href="#">Drop Down 2</a></li>
-              <li><a href="#">Drop Down 3</a></li>
-              <li><a href="#">Drop Down 4</a></li>
-            </ul>
-          </li>
-          <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
-          <li><a class="getstarted scrollto" href="#about">Get Started</a></li>
+          <li><a class="nav-link scrollto active honda" href="#hero">Home</a></li>
+          <li><a class="nav-link scrollto honda" href="#about">About</a></li>
+          <li><a class="nav-link scrollto honda" href="#services">Services</a></li>
+          <li><a class="nav-link scrollto honda" href="#portfolio">Portfolio</a></li>
+          <li><a class="nav-link scrollto honda" href="#team">Team</a></li>
+          <li><a class="honda" href="blog.html">Blog</a></li>
+          <li><a class="nav-link scrollto honda" href="#contact">Contact</a></li>
+          <li><a class="getstarted scrollto bg-warning" href="#about">Get Started</a></li>
         </ul>
-        <i class="bi bi-list mobile-nav-toggle"></i>
+        <i class="bi bi-list mobile-nav-toggle honda"></i>
       </nav><!-- .navbar -->
 
     </div>
@@ -92,11 +74,11 @@
     <div class="container">
       <div class="row">
         <div class="col-lg-6 d-flex flex-column justify-content-center">
-          <h1 data-aos="fade-up">We offer modern solutions for growing your business</h1>
-          <h2 data-aos="fade-up" data-aos-delay="400">We are team of talented designers making websites with Bootstrap</h2>
+          <h1 data-aos="fade-up">Beli Motor Honda Mudah, Original, dan Terpercaya</h1>
+          <h2 data-aos="fade-up" data-aos-delay="400">Solusi ganti motor anti ribet</h2>
           <div data-aos="fade-up" data-aos-delay="600">
             <div class="text-center text-lg-start">
-              <a href="#about" class="btn-get-started scrollto d-inline-flex align-items-center justify-content-center align-self-center">
+              <a href="#about" class="btn-get-started scrollto d-inline-flex align-items-center justify-content-center align-self-center bg-warning">
                 <span>Get Started</span>
                 <i class="bi bi-arrow-right"></i>
               </a>
@@ -104,7 +86,31 @@
           </div>
         </div>
         <div class="col-lg-6 hero-img" data-aos="zoom-out" data-aos-delay="200">
-          <img src="assets/img/hero-img.png" class="img-fluid" alt="">
+          <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <img src="assets/img/hero-img1.jpg" class="d-block w-100 img-fluid" alt="">
+              </div>
+              <div class="carousel-item">
+                <img src="assets/img/hero-img2.png" class="d-block w-100 img-fluid" alt="">
+              </div>
+              <div class="carousel-item">
+                <img src="assets/img/hero-img.jpg" class="d-block w-100 img-fluid" alt="">
+              </div>
+              <div class="carousel-item">
+                <img src="assets/img/hero-img3.jpg" class="d-block w-100 img-fluid" alt="">
+              </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Next</span>
+            </button>
+          </div>
+          
         </div>
       </div>
     </div>
@@ -120,10 +126,12 @@
 
           <div class="col-lg-6 d-flex flex-column justify-content-center" data-aos="fade-up" data-aos-delay="200">
             <div class="content">
-              <h3>Who We Are</h3>
-              <h2>Expedita voluptas omnis cupiditate totam eveniet nobis sint iste. Dolores est repellat corrupti reprehenderit.</h2>
+              <h3>Halo, Saya Yoga Marketing Consultant Dealer</h3>
+              <h2>Selamat Datang di Honda Magelang</h2>
               <p>
-                Quisquam vel ut sint cum eos hic dolores aperiam. Sed deserunt et. Inventore et et dolor consequatur itaque ut voluptate sed et. Magnam nam ipsum tenetur suscipit voluptatum nam et est corrupti.
+                Kami akan senantiasa membantu anda dalam melayani pembelian unit sepeda motor Honda, kami memberikan informasi terbaru, promo terbaru, serta harga termurah!
+
+                Ingin melakukan pembelian secara cash maupun kredit? Ingin tukar tambah motor lama dengan motor baru? Kosultasikan kepada kami rencana pembelian Motor Anda.
               </p>
               <div class="text-center text-lg-start">
                 <a href="#" class="btn-read-more d-inline-flex align-items-center justify-content-center align-self-center">
@@ -135,7 +143,7 @@
           </div>
 
           <div class="col-lg-6 d-flex align-items-center" data-aos="zoom-out" data-aos-delay="200">
-            <img src="assets/img/about.jpg" class="img-fluid" alt="">
+            <img src="assets/img/about.png" class="img-fluid" alt="">
           </div>
 
         </div>
